@@ -1,0 +1,28 @@
+<mt:if name="psv">
+<style type="text/css">
+#psv th, #psv td {
+    padding: 3px; }
+#psv .header th {
+    border-bottom:solid 1px #888; }
+#psv th.name {
+    text-align:left; width:30%; }
+#psv .plugin td {
+    text-align:center; width:20%; }
+</style>
+
+<p><table id="psv">
+    <tr class="header">
+        <th class="name"><__trans phrase="Plugin Name"></th>
+        <th class="version"><__trans phrase="Plugin Version"></th>
+        <th class="schema_version"><__trans phrase="Schema Version"></th>
+    </tr>
+<mt:loop name="psv">
+    <tr class="plugin">
+        <th class="name"><span<mt:unless name="found"> class="icon-left icon-warning" title="<__trans phrase="Component '[_1]' is not found." params="<mt:var name="id">">"</mt:unless>><mt:var name="name" escape="html"></span></th>
+        <td class="version"><mt:var name="version" default="-" escape="html"></td>
+        <td class="schema_version"><mt:var name="schema_version" escape="html"></td>
+    </tr>
+</mt:loop></table></p>
+<mt:else>
+    <p><__trans phrase="No plugins that has any schema version."></p>
+</mt:if>
